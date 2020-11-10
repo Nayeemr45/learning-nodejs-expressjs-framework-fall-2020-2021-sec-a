@@ -15,42 +15,44 @@
             <a href="/logout">logout</a> 
 			<table>
 				<tr>
-					<td><input type="text" id="search" name="search" onBlur="search_user()"></td>
+					<td><input type="text" id="search" name="search" onblur="search_user()"></td>
 				</tr>
 				<tr>
-					<td><input type="submit" name="submit" value="Search"></td>
+					<td><input type="submit"  name="submit" value="Search" ></td>
 				</tr>
 			</table>
 		</fieldset>
     </form>
-    <table>
+    <table border="1" style="margin-top: 30px;">
+        <tr>
+			<td>Employ Name</td>
+			<td>Company Name</td>
+			<td>Conatct No</td>
+			<td>Username</td>
+			<td>Password</td>
+		</tr>
+    <tr>
         <td>
-            <p><span id="emp_name" style="font-size:12px;"></span> </p>
-        </td>
-        <td>
-            <p><span id="emp_name" style="font-size:12px;"></span> </p>
+            <span id="emp_name" style="font-size:12px;"></span>
 
         </td>
         <td>
-            <p><span id="c_name" style="font-size:12px;"></span> </p>
+            <span id="c_name" style="font-size:12px;"></span>
 
         </td>
         <td>
-            <p><span id="contact_no" style="font-size:12px;"></span> </p>
+            <span id="contact_no" style="font-size:12px;"></span>
 
         </td>
         <td>
-            <p><span id="type" style="font-size:12px;"></span> </p>
+            <span id="username" style="font-size:12px;"></span>
 
         </td>
         <td>
-            <p><span id="username" style="font-size:12px;"></span> </p>
+            <span id="password" style="font-size:12px;"></span>
 
         </td>
-        <td>
-            <p><span id="password" style="font-size:12px;"></span> </p>
-
-        </td>
+        </tr>
     </table>
 
     <script>

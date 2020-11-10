@@ -3,6 +3,8 @@ const express 			= require('express');
 const bodyParser 		= require('body-parser');
 const exSession 		= require('express-session');
 const cookieParser 		= require('cookie-parser');
+const upload            = require('express-fileupload');
+const { body, validationResult } = require('express-validator');
 
 const login				= require('./controllers/login');
 const logout			= require('./controllers/logout');
@@ -12,7 +14,6 @@ const user				= require('./controllers/user');
 const emp				= require('./controllers/emp');
 const app				= express();
 const port				= 3000;
-
 //configuration
 app.set('view engine', 'ejs');
 
@@ -21,6 +22,7 @@ app.set('view engine', 'ejs');
 app.use('/abc', express.static('assets'))
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
+app.use(upload());
 app.use(exSession({secret: 'secret value', saveUninitialized: true, resave: false}));
 
 
