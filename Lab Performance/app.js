@@ -7,7 +7,9 @@ const cookieParser 		= require('cookie-parser');
 const login				= require('./controllers/login');
 const logout			= require('./controllers/logout');
 const home				= require('./controllers/home');
+const emp_home			= require('./controllers/emp_home');
 const user				= require('./controllers/user');
+const emp				= require('./controllers/emp');
 const app				= express();
 const port				= 3000;
 
@@ -24,8 +26,10 @@ app.use(exSession({secret: 'secret value', saveUninitialized: true, resave: fals
 
 app.use('/login', login);
 app.use('/home', home);
+app.use('/emp_home', emp_home);
 app.use('/logout', logout);
 app.use('/user', user);
+app.use('/emp', emp);
 
 //router
 app.get('/', (req, res)=>{

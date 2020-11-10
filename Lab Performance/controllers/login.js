@@ -13,10 +13,18 @@ router.post('/', (req, res)=>{
 		password: req.body.password
 	};
 
-	userModel.validate_emp(user, function(status){
+	userModel.validate(user, function(status){
+		console.log(user.username)
 		if(status){
-			res.cookie('uname', req.body.username);
-			res.redirect('/home');
+			if(user.username == "nayeem"){
+				res.cookie('uname', req.body.username);
+				res.redirect('/home');
+			}
+			else {
+				res.cookie('uname', req.body.username);
+				res.redirect('/emp_home');
+			}
+			
 		}else{
 			res.redirect('/login');
 		}

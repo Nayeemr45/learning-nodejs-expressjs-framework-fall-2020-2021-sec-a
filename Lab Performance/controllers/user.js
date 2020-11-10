@@ -73,7 +73,7 @@ router.get('/delete/:id', (req, res)=>{
 			password : results[0].password
 		}
 		//console.log(results[0].username)
-		console.log(users)
+		//console.log(users)
 		res.render('user/delete', {users : users});
 	});
 });
