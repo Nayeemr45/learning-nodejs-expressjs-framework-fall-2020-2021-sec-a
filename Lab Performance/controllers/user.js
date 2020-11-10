@@ -19,11 +19,13 @@ router.get('/create', (req, res)=>{
 router.post('/create', (req, res)=>{
 	
 			var user = {
+				emp_name : req.body.emp_name,
+				c_name : req.body.c_name,
+				contact_no : req.body.contact_no,
 				username : req.body.username,
-				password : req.body.password,
-				email : req.body.email
+				password : req.body.password
 			}
-			userModel.insert(user, function(status){
+			userModel.insert_emp(user, function(status){
 				//console.log(status)
 				res.redirect('/home/userlist');
 			});
@@ -33,11 +35,13 @@ router.post('/create', (req, res)=>{
 
 router.get('/edit/:id', (req, res)=>{
 	
-	userModel.getById(req.params.id, function(results){
+	userModel.getById_emp(req.params.id, function(results){
 		var users ={
+			emp_name : results[0].emp_name,
+			c_name : results[0].c_name,
+			contact_no : results[0].contact_no,
 			username : results[0].username,
-			password : results[0].password,
-			email : results[0].email
+			password : results[0].password
 		}
 		//console.log(results)
 		res.render('user/edit', {users: users});
@@ -47,22 +51,26 @@ router.get('/edit/:id', (req, res)=>{
 router.post('/edit/:id', (req, res)=>{
 	var user = {
 		id: req.params.id,
+		emp_name : req.body.emp_name,
+		c_name : req.body.c_name,
+		contact_no : req.body.contact_no,
 		username : req.body.username,
-		password : req.body.password,
-		email : req.body.email
+		password : req.body.password
 	}
-	userModel.update(user, function(status){
+	userModel.update_emp(user, function(status){
 		//console.log(status)
 		res.redirect('/home/userlist');
 	});
 });
 
 router.get('/delete/:id', (req, res)=>{
-	userModel.getById(req.params.id, function(results){
+	userModel.getById_emp(req.params.id, function(results){
 		var users ={
+			emp_name : results[0].emp_name,
+			c_name : results[0].c_name,
+			contact_no : results[0].contact_no,
 			username : results[0].username,
-			password : results[0].password,
-			email : results[0].email
+			password : results[0].password
 		}
 		//console.log(results[0].username)
 		console.log(users)
@@ -72,7 +80,7 @@ router.get('/delete/:id', (req, res)=>{
 
 router.post('/delete/:id', (req, res)=>{
 
-	userModel.delete(req.params.id, function(status){
+	userModel.delete_emp(req.params.id, function(status){
 		res.redirect('/home/userlist');
 	});
 });

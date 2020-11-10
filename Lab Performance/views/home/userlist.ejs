@@ -13,6 +13,9 @@
 	<table border="1">
 		<tr>
 			<td>ID</td>
+			<td>Employ Name</td>
+			<td>Company Name</td>
+			<td>Conatct No</td>
 			<td>Username</td>
 			<td>Password</td>
 			<td>Type</td>
@@ -34,9 +37,12 @@
 			users.forEach( function(std){ %>
 			<tr>
 				<td><%= std.id %></td>
+				<td><%= std.emp_name %></td>
+				<td><%= std.c_name %></td>
+				<td><%= std.contact_no %></td>
 				<td><%= std.username %></td>
 				<td><%= std.password %></td>
-				<td><%= std.email %></td>
+				<td><%= std.type %></td>
 				<td>
 					<a href="/user/edit/<%= std.id %>">Edit</a> |
 					<a href="/user/delete/<%= std.id %>">Delete</a>

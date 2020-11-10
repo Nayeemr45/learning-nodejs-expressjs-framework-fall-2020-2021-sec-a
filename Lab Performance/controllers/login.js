@@ -13,7 +13,7 @@ router.post('/', (req, res)=>{
 		password: req.body.password
 	};
 
-	userModel.validate(user, function(status){
+	userModel.validate_emp(user, function(status){
 		if(status){
 			res.cookie('uname', req.body.username);
 			res.redirect('/home');
