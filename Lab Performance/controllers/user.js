@@ -1,4 +1,5 @@
 const express 	= require('express');
+const { search } = require('./home');
 //const { param } = require('./home');
 const userModel = require.main.require('./models/userModel');
 const router 	= express.Router();
@@ -32,6 +33,30 @@ router.post('/create', (req, res)=>{
 
 
 });
+
+router.get('/search_user', (req, res)=>{
+		res.render('home/search_user');
+
+});
+router.post('/search_user', (req, res)=>{
+		var search = req.body.search
+		console.log(search)
+
+	 userModel.search_emp(search, function(results){
+
+		console.log(results)
+		var users={
+			emp_name : results[0].emp_name ,
+			c_name : results[0].c_name ,
+			contact_no : results[0].contact_no ,
+			username : results[0].username ,
+			password : results[0].password 
+		}
+		res.json({users : results});
+	});
+
+});
+
 
 router.get('/edit/:id', (req, res)=>{
 	

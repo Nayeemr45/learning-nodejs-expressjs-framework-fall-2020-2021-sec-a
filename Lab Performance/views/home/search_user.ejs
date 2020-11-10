@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<script src="/abc/js/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+
+    <form method="post">
+		<fieldset>
+            <legend>Search User</legend>
+            <a href="/home">Back</a>
+            <a href="/logout">logout</a> 
+			<table>
+				<tr>
+					<td><input type="text" id="search" name="search" onBlur="search_user()"></td>
+				</tr>
+				<tr>
+					<td><input type="submit" name="submit" value="Search"></td>
+				</tr>
+			</table>
+		</fieldset>
+    </form>
+    <table>
+        <td>
+            <p><span id="emp_name" style="font-size:12px;"></span> </p>
+        </td>
+        <td>
+            <p><span id="emp_name" style="font-size:12px;"></span> </p>
+
+        </td>
+        <td>
+            <p><span id="c_name" style="font-size:12px;"></span> </p>
+
+        </td>
+        <td>
+            <p><span id="contact_no" style="font-size:12px;"></span> </p>
+
+        </td>
+        <td>
+            <p><span id="type" style="font-size:12px;"></span> </p>
+
+        </td>
+        <td>
+            <p><span id="username" style="font-size:12px;"></span> </p>
+
+        </td>
+        <td>
+            <p><span id="password" style="font-size:12px;"></span> </p>
+
+        </td>
+    </table>
+
+    <script>
+        function search_user() {
+            jQuery.ajax({
+            url: "/user/search_user",
+            data:'search='+$("#search").val(),
+            type: "POST",
+            success:function(data){
+            console.log(data);
+            $("#emp_name").html(data.users.emp_name);
+            $("#c_name").html(data.users.c_name);
+            $("#contact_no").html(data.users.contact_no);
+            $("#username").html(data.users.username);
+            $("#password").html(data.users.password);
+            },
+            error:function (){}
+            });
+}
+    </script>
+</body>
+</html>

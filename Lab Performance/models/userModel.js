@@ -95,5 +95,11 @@ module.exports= {
 		db.getResults(sql, function(results){
 			callback(results);
 		});
+	},
+	search_emp: function(search, callback){
+		var sql = "select * from user where emp_name='"+search+"'";
+		db.getResults(sql, function(results){
+			callback(results);
+		});
 	}
 }
