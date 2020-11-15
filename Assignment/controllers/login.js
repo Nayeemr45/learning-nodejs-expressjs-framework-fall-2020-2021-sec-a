@@ -15,8 +15,16 @@ router.post('/', (req, res)=>{
 
 	userModel.validate(user, function(status){
 		if(status){
+
+			if(user.username = "nayeem"){
 			res.cookie('uname', req.body.username);
-			res.redirect('/home');
+			res.redirect('/user_home');
+			}
+			else {
+				res.cookie('uname', req.body.username);
+				res.redirect('/user_home');
+			}
+
 		}else{
 			res.redirect('/login');
 		}
