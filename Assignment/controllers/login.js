@@ -13,22 +13,24 @@ router.post('/', (req, res)=>{
 		password: req.body.password
 	};
 
-	userModel.validate(user, function(status){
-		if(status){
+	
+		userModel.validate(user, function(status){
+			console.log(status[0].type)
 
-			if(user.username = "nayeem"){
+			if(status[0].type == "admin"){
 			res.cookie('uname', req.body.username);
-			res.redirect('/user_home');
+			res.redirect('/home/all_product');
 			}
-			else {
+			else if(status[0].type == "user") {
 				res.cookie('uname', req.body.username);
 				res.redirect('/user_home');
 			}
 
-		}else{
+		else{
 			res.redirect('/login');
 		}
 	});
+	
 }); 
 
 module.exports = router;

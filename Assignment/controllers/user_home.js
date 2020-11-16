@@ -11,16 +11,16 @@ router.get('*',  (req, res, next)=>{
 });
 
 router.get('/', (req, res)=>{
-	res.render('user_home/index');
+	res.render('user_home/index',{user: req.cookies['uname']});
+});
+router.post('/', (req, res)=>{
+	var search = req.body.search;
+	userModel.get_search_product( search , function(results){
+		res.render('user_home/search', {results: results});
+	});
 });
 
 
-router.get('/userlist', (req, res)=>{
 
-	userModel.getAll(function(results){
-		res.render('user_home/userlist', {users: results});
-	});
-
-})
 
 module.exports = router;

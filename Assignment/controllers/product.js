@@ -12,7 +12,49 @@ router.get('*',  (req, res, next)=>{
 });
 
 router.get('/casing', (req, res)=>{
-	res.render('product/casing');
+	userModel.getAll_casing(function(results){
+		res.render('product/casing', {results: results});
+	});
+});
+router.get('/power_supply', (req, res)=>{
+	userModel.getAll_power_supply(function(results){
+		res.render('product/power_supply', {results: results});
+	});
+});
+router.get('/power_supply_coorsair', (req, res)=>{
+	userModel.getAll_power_supply_coorsair(function(results){
+		res.render('product/power_supply_coorsair', {results: results});
+	});
+});
+router.get('/power_supply_antec', (req, res)=>{
+	userModel.getAll_power_supply_antec(function(results){
+		res.render('product/power_supply_antec', {results: results});
+	});
+});
+
+router.post('/power_supply_antec', (req, res)=>{
+	var search = req.body.search;
+	userModel.get_search_product( search , function(results){
+		res.render('user_home/search', {results: results});
+	});
+});
+router.post('/power_supply_coorsair', (req, res)=>{
+	var search = req.body.search;
+	userModel.get_search_product( search , function(results){
+		res.render('user_home/search', {results: results});
+	});
+});
+router.post('/power_supply', (req, res)=>{
+	var search = req.body.search;
+	userModel.get_search_product( search , function(results){
+		res.render('user_home/search', {results: results});
+	});
+});
+router.post('/casing', (req, res)=>{
+	var search = req.body.search;
+	userModel.get_search_product( search , function(results){
+		res.render('user_home/search', {results: results});
+	});
 });
 
 
@@ -42,6 +84,46 @@ router.post('/edit/:id', (req, res)=>{
 		res.redirect('/home/userlist');
 	});
 });
+
+
+
+
+
+router.get('/see_review/:id', (req, res)=>{
+
+
+	userModel.getById_see_review(req.params.id, function(results){
+		
+		res.render('product/see_review', {results: results});
+	});
+});
+
+router.get('/give_review/:id', (req, res)=>{
+	
+		res.render('product/give_review');
+	
+});
+router.post('/give_review/:id', (req, res)=>{
+	var review = {
+		p_id : req.params.id,
+		name : req.body.name,
+		comment : req.body.comment
+	}
+	userModel.insert_review(review, function(result){
+
+		userModel.getById_see_review(review.p_id, function(results){
+		
+			res.render('product/see_review', {results: results});
+		}); 
+
+		//res.render('product/casing');
+
+	});
+	
+});
+
+
+
 
 router.get('/delete/:id', (req, res)=>{
 	userModel.getById(req.params.id, function(results){

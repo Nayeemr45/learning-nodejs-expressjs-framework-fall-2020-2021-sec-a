@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Reviews</title>
+</head>
+<body>
+	<h1> Reviews</h1>
+
+	<a href="/product/casing">Back</a> | 
+	<a href="/logout">logout</a> 
+	<br>
+
+	<table border="1">
+		<tr>
+			<td>Product ID</td>
+			<td>Name</td>
+			<td>Review</td>
+		</tr>
+		
+		
+		<% 
+        results.forEach(function(std,i){ %>
+			<tr>
+				<td><%= std.p_id %></td>
+				<td><%= std.name %></td>
+				<td><%= std.comment %></td>
+			</tr>
+
+		<%
+			}); 
+		%>
+		
+	</table>
+
+</body>
+</html>

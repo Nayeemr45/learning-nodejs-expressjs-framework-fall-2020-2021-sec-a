@@ -10,17 +10,49 @@ router.get('*',  (req, res, next)=>{
 	}
 });
 
-router.get('/', (req, res)=>{
-	res.render('home/index', {name: req.cookies['uname'], id:'123'});
+router.get('/all_product', (req, res)=>{
+
+	userModel.getAll_product(function(results){
+	res.render('home/index', {results: results});
+});
+
+});
+router.get('/user', (req, res)=>{
+
+	userModel.getAll_user(function(results){
+	res.render('home/user', {results: results});
+});
+
+});
+router.get('/review', (req, res)=>{
+
+	userModel.getAll_review(function(results){
+	res.render('home/review', {results: results});
+});
+
 });
 
 
-router.get('/userlist', (req, res)=>{
+router.get('/add_product', (req, res)=>{
 
-	userModel.getAll(function(results){
-		res.render('home/userlist', {users: results});
-	});
+		res.render('home/add_product');
 
+})
+router.post('/add_product', (req, res)=>{
+
+		var product={
+			name : req.body.name,
+			price : req.body.price,
+			brand : req.body.brand,
+			type : req.body.type,
+			subtype : req.body.subtype,
+			description : req.body.description,
+			image : req.body.image
+		}
+		userModel.add_product(product, function(status){
+			res.redirect('/home/all_product');
+		});
+		
 })
 
 module.exports = router;
