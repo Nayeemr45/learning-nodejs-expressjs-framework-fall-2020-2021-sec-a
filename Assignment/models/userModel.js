@@ -99,6 +99,8 @@ module.exports= {
 		//console.log(user)
 		var sql = "INSERT INTO user (username, password, email, contact_no ,type) VALUES ('"+username+"', '"+password+"','"+email+"','"+contact_no+"','"+type+"')";
 		db.getResults(sql, function(results){
+        console.log("results", results.insertId)
+			
 			callback(results);
 		});
 	},

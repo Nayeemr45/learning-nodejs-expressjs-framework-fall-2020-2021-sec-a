@@ -50,7 +50,7 @@ router.post('/create',urlencodedParser,[
 				}
 	
 				/* console.log(user)
-				var file = req.body.file;
+				var file = req.files;
 				console.log(file) */
 	
 				/* file.mv('./abc/img/' +file, function(err){
