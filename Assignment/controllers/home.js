@@ -40,19 +40,37 @@ router.get('/add_product', (req, res)=>{
 })
 router.post('/add_product', (req, res)=>{
 
-		var product={
-			name : req.body.name,
-			price : req.body.price,
-			brand : req.body.brand,
-			type : req.body.type,
-			subtype : req.body.subtype,
-			description : req.body.description,
-			image : req.body.image
-		}
-		userModel.add_product(product, function(status){
-			res.redirect('/home/all_product');
+	if(req.files){
+		var file = req.files.file;
+		var filename = file.name;
+		image = filename;
+		console.log("image", image)
+
+		file.mv('./assets/upload/'+filename,async function(err){
+			if(err){
+				res.redirect('/register');
+			}
+			else{
+				var product={
+					name : req.body.name,
+					price : req.body.price,
+					brand : req.body.brand,
+					type : req.body.type,
+					subtype : req.body.subtype,
+					description : req.body.description,
+					image : image
+				}
+				userModel.add_product(product, function(status){
+					res.redirect('/home/all_product');
+				});				
+			}
 		});
-		
+	}
+	else{
+		res.send("file not uploaded");
+	}
+
+	
 })
 
 module.exports = router;

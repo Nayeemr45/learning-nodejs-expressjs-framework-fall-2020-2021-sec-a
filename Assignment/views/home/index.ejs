@@ -105,6 +105,7 @@
               <table class="table align-items-center table-flush">
                 <thead class="thead-light">
                   <tr>
+                    <th scope="col" class="sort" data-sort="name"></th>
                     <th scope="col" class="sort" data-sort="name">ID</th>
                     <th scope="col" class="sort" data-sort="budget">Name</th>
                     <th scope="col" class="sort" data-sort="status">Price</th>
@@ -119,7 +120,19 @@
                 <tbody class="list">
 					<%  results.forEach( function(std){  %>
                   <tr>
+                    <td class="text-right">
+                      <div class="dropdown">
+                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fas fa-ellipsis-v"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                          <a class="dropdown-item" href="/delete_product/delete/<%= std.id %>">Delete</a>
+                          <a class="dropdown-item" href="/edit_product/edit/<%= std.id %>">Edit</a>
+                        </div>
+                      </div>
+                    </td>
                     <th scope="row">
+                      
                       <div class="media align-items-center">
                         <div class="media-body">
                           <span class="name mb-0 text-sm"><%= std.id %></span>
@@ -127,7 +140,7 @@
                       </div>
                     </th>
                     <td class="budget">
-						<%= std.name %>
+						            <%= std.name %>
                     </td>
                     <td>
                         <span class="status"><%= std.price %></span>                   
@@ -148,17 +161,7 @@
                         <span class="status"><%= std.description %></span>                     
                     </td>
                    
-                    <td class="text-right">
-                      <div class="dropdown">
-                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fas fa-ellipsis-v"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                          <a class="dropdown-item" href="/delete_product/delete/<%= std.id %>">Delete</a>
-                          <a class="dropdown-item" href="/edit_product/edit/<%= std.id %>">Edit</a>
-                        </div>
-                      </div>
-                    </td>
+                   
                   </tr>
                   <%
 			}); 

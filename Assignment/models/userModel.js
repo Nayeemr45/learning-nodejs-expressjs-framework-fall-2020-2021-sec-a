@@ -49,7 +49,7 @@ module.exports= {
 		});
 	},
 	getAll_product: function(callback){
-		var sql = "select * from product";
+		var sql = "select * from product ORDER BY ID DESC";
 		db.getResults(sql, function(results){
 			callback(results);
 		});
@@ -86,6 +86,42 @@ module.exports= {
 	},
 	getAll_power_supply_antec: function(callback){
 		var sql = "select * from product where type = 'Power Supply' AND brand = 'Antec'";
+		db.getResults(sql, function(results){
+			callback(results);
+		});
+	},
+	getAll_processor: function(callback){
+		var sql = "select * from product where type = 'processor'";
+		db.getResults(sql, function(results){
+			callback(results);
+		});
+	},
+	getAll_amd_processor: function(callback){
+		var sql = "select * from product where type = 'processor' AND brand = 'amd'";
+		db.getResults(sql, function(results){
+			callback(results);
+		});
+	},
+	getAll_intel_processor: function(callback){
+		var sql = "select * from product where type = 'processor' AND brand = 'intel'";
+		db.getResults(sql, function(results){
+			callback(results);
+		});
+	},
+	getAll_cpu_cooler: function(callback){
+		var sql = "select * from product where type = 'cpu cooler'";
+		db.getResults(sql, function(results){
+			callback(results);
+		});
+	},
+	getAll_coorsair_cpu_cooler: function(callback){
+		var sql = "select * from product where type = 'cpu cooler' AND brand = 'corsair'";
+		db.getResults(sql, function(results){
+			callback(results);
+		});
+	},
+	getAll_antec_cpu_cooler: function(callback){
+		var sql = "select * from product where type = 'cpu cooler' AND brand = 'antec'";
 		db.getResults(sql, function(results){
 			callback(results);
 		});

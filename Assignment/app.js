@@ -15,6 +15,7 @@ const user				= require('./controllers/user');
 const register				= require('./controllers/register');
 const app				= express();
 const port				= 3000;
+const upload 	= require('express-fileupload');
 
 //configuration
 app.set('view engine', 'ejs');
@@ -23,6 +24,7 @@ app.set('view engine', 'ejs');
 //middleware
 app.use('/abc', express.static('assets'))
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(upload());
 app.use(cookieParser());
 app.use(exSession({secret: 'secret value', saveUninitialized: true, resave: false}));
 

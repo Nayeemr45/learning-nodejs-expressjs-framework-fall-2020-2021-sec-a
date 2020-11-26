@@ -31,6 +31,58 @@ router.get('/power_supply_antec', (req, res)=>{
 		res.render('product/power_supply_antec', {results: results});
 	});
 });
+router.get('/processor', (req, res)=>{
+	userModel.getAll_processor(function(results){
+		res.render('product/processor/index', {results: results});
+	});
+});
+router.get('/processor/amd', (req, res)=>{
+	userModel.getAll_amd_processor(function(results){
+		res.render('product/processor/amd', {results: results});
+	});
+});
+router.get('/processor/intel', (req, res)=>{
+	userModel.getAll_intel_processor(function(results){
+		res.render('product/processor/intel', {results: results});
+	});
+});
+router.get('/cpu_cooler', (req, res)=>{
+	userModel.getAll_cpu_cooler(function(results){
+		res.render('product/cpu_cooler/index', {results: results});
+	});
+});
+router.get('/cpu_cooler/coorsair', (req, res)=>{
+	userModel.getAll_coorsair_cpu_cooler(function(results){
+		res.render('product/cpu_cooler/coorsair', {results: results});
+	});
+});
+router.get('/cpu_cooler/antec', (req, res)=>{
+	userModel.getAll_antec_cpu_cooler(function(results){
+		res.render('product/cpu_cooler/antec', {results: results});
+	});
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////// Post
+
+
 
 router.post('/power_supply_antec', (req, res)=>{
 	var search = req.body.search;
