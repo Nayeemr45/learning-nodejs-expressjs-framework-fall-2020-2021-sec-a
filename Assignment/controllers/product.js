@@ -61,10 +61,126 @@ router.get('/cpu_cooler/antec', (req, res)=>{
 		res.render('product/cpu_cooler/antec', {results: results});
 	});
 });
-
-
-
-
+//motherboard
+router.get('/motherboard', (req, res)=>{
+	userModel.getAll_motherboard(function(results){
+		res.render('product/motherboard/index', {results: results});
+	});
+});
+router.get('/motherboard/asus_intel', (req, res)=>{
+	userModel.getAll_motherboard_asus_intel(function(results){
+		res.render('product/motherboard/asus_intel', {results: results});
+	});
+});
+router.get('/motherboard/asus_amd', (req, res)=>{
+	userModel.getAll_motherboard_asus_amd(function(results){
+		res.render('product/motherboard/asus_amd', {results: results});
+	});
+});
+router.get('/motherboard/msi_intel', (req, res)=>{
+	userModel.getAll_motherboard_msi_intel(function(results){
+		res.render('product/motherboard/msi_intel', {results: results});
+	});
+});
+router.get('/motherboard/msi_amd', (req, res)=>{
+	userModel.getAll_motherboard_msi_amd(function(results){
+		res.render('product/motherboard/msi_amd', {results: results});
+	});
+});
+//Storage
+router.get('/storage', (req, res)=>{
+	userModel.getAll_storage(function(results){
+		res.render('product/storage/index', {results: results});
+	});
+});
+router.get('/storage/hdd', (req, res)=>{
+	userModel.getAll_storage_hdd(function(results){
+		res.render('product/storage/hdd/index', {results: results});
+	});
+});
+router.get('/storage/hdd/wd', (req, res)=>{
+	userModel.getAll_storage_hdd_wd(function(results){
+		res.render('product/storage/hdd/wd', {results: results});
+	});
+});
+router.get('/storage/hdd/sg', (req, res)=>{
+	userModel.getAll_storage_hdd_sg(function(results){
+		res.render('product/storage/hdd/sg', {results: results});
+	});
+});
+router.get('/storage/ssd', (req, res)=>{
+	userModel.getAll_storage_ssd(function(results){
+		res.render('product/storage/ssd/index', {results: results});
+	});
+});
+router.get('/storage/ssd/wd', (req, res)=>{
+	userModel.getAll_storage_ssd_wd(function(results){
+		res.render('product/storage/ssd/wd', {results: results});
+	});
+});
+router.get('/storage/ssd/sg', (req, res)=>{
+	userModel.getAll_storage_ssd_sg(function(results){
+		res.render('product/storage/ssd/sg', {results: results});
+	});
+});
+//Ram
+router.get('/ram', (req, res)=>{
+	userModel.getAll_ram(function(results){
+		res.render('product/ram/index', {results: results});
+	});
+});
+router.get('/ram/desktop', (req, res)=>{
+	userModel.getAll_ram_desktop(function(results){
+		res.render('product/ram/desktop/index', {results: results});
+	});
+});
+router.get('/ram/desktop/coorsair', (req, res)=>{
+	userModel.getAll_ram_desktop_coorsair(function(results){
+		res.render('product/ram/desktop/coorsair', {results: results});
+	});
+});
+router.get('/ram/desktop/gskill', (req, res)=>{
+	userModel.getAll_ram_desktop_gskill(function(results){
+		res.render('product/ram/desktop/gskill', {results: results});
+	});
+});
+router.get('/ram/laptop', (req, res)=>{
+	userModel.getAll_ram_laptop(function(results){
+		res.render('product/ram/laptop/index', {results: results});
+	});
+});
+router.get('/ram/laptop/adata', (req, res)=>{
+	userModel.getAll_ram_laptop_adata(function(results){
+		res.render('product/ram/laptop/adata', {results: results});
+	});
+});
+//Monitors
+router.get('/monitor', (req, res)=>{
+	userModel.getAll_monitor(function(results){
+        console.log("🚀 ~ file: product.js ~ line 160 ~ userModel.getAll_monitor ~ results", results)
+		res.render('product/monitor/index', {results: results});
+	});
+});
+router.get('/monitor/acer', (req, res)=>{
+	userModel.getAll_monitor_acer(function(results){
+		res.render('product/monitor/acer', {results: results});
+	});
+});
+router.get('/monitor/asus', (req, res)=>{
+	userModel.getAll_monitor_asus(function(results){
+		res.render('product/monitor/asus', {results: results});
+	});
+});
+router.get('/monitor/dell', (req, res)=>{
+	userModel.getAll_monitor_dell(function(results){
+		res.render('product/monitor/dell', {results: results});
+	});
+});
+router.get('/monitor/hp', (req, res)=>{
+	userModel.getAll_monitor_hp(function(results){
+		res.render('product/monitor/hp', {results: results});
+	});
+});
 
 
 
@@ -108,6 +224,159 @@ router.post('/casing', (req, res)=>{
 		res.render('user_home/search', {results: results});
 	});
 });
+router.post('/processor', (req, res)=>{
+	var search = req.body.search;
+	userModel.get_search_product( search , function(results){
+		res.render('user_home/search', {results: results});
+	});
+});
+router.post('/processor/intel', (req, res)=>{
+	var search = req.body.search;
+	userModel.get_search_product( search , function(results){
+		res.render('user_home/search', {results: results});
+	});
+});
+router.post('/processor/amd', (req, res)=>{
+	var search = req.body.search;
+	userModel.get_search_product( search , function(results){
+		res.render('user_home/search', {results: results});
+	});
+});
+router.post('/cpu_cooler', (req, res)=>{
+	var search = req.body.search;
+	userModel.get_search_product( search , function(results){
+		res.render('user_home/search', {results: results});
+	});
+});
+router.post('/cpu_cooler/coorsair', (req, res)=>{
+	var search = req.body.search;
+	userModel.get_search_product( search , function(results){
+		res.render('user_home/search', {results: results});
+	});
+});
+router.post('/cpu_cooler/antec', (req, res)=>{
+	var search = req.body.search;
+	userModel.get_search_product( search , function(results){
+		res.render('user_home/search', {results: results});
+	});
+});
+router.post('/motherboard', (req, res)=>{
+	var search = req.body.search;
+	userModel.get_search_product( search , function(results){
+		res.render('user_home/search', {results: results});
+	});
+});
+router.post('/motherboard/asus_intel', (req, res)=>{
+	var search = req.body.search;
+	userModel.get_search_product( search , function(results){
+		res.render('user_home/search', {results: results});
+	});
+});
+router.post('/motherboard/asus_amd', (req, res)=>{
+	var search = req.body.search;
+	userModel.get_search_product( search , function(results){
+		res.render('user_home/search', {results: results});
+	});
+});
+router.post('/motherboard/msi_intel', (req, res)=>{
+	var search = req.body.search;
+	userModel.get_search_product( search , function(results){
+		res.render('user_home/search', {results: results});
+	});
+});
+router.post('/motherboard/msi_amd', (req, res)=>{
+	var search = req.body.search;
+	userModel.get_search_product( search , function(results){
+		res.render('user_home/search', {results: results});
+	});
+});
+router.post('/storage', (req, res)=>{
+	var search = req.body.search;
+	userModel.get_search_product( search , function(results){
+		res.render('user_home/search', {results: results});
+	});
+});
+router.post('/storage/hdd', (req, res)=>{
+	var search = req.body.search;
+	userModel.get_search_product( search , function(results){
+		res.render('user_home/search', {results: results});
+	});
+});
+router.post('/storage/hdd/wd', (req, res)=>{
+	var search = req.body.search;
+	userModel.get_search_product( search , function(results){
+		res.render('user_home/search', {results: results});
+	});
+});
+router.post('/storage/hdd/sg', (req, res)=>{
+	var search = req.body.search;
+	userModel.get_search_product( search , function(results){
+		res.render('user_home/search', {results: results});
+	});
+});
+
+router.post('/storage/ssd', (req, res)=>{
+	var search = req.body.search;
+	userModel.get_search_product( search , function(results){
+		res.render('user_home/search', {results: results});
+	});
+});
+
+router.post('/storage/ssd/sg', (req, res)=>{
+	var search = req.body.search;
+	userModel.get_search_product( search , function(results){
+		res.render('user_home/search', {results: results});
+	});
+});
+router.post('/storage/ssd/wd', (req, res)=>{
+	var search = req.body.search;
+	userModel.get_search_product( search , function(results){
+		res.render('user_home/search', {results: results});
+	});
+});
+
+router.post('/ram', (req, res)=>{
+	var search = req.body.search;
+	userModel.get_search_product( search , function(results){
+		res.render('user_home/search', {results: results});
+	});
+});
+router.post('/ram/desktop', (req, res)=>{
+	var search = req.body.search;
+	userModel.get_search_product( search , function(results){
+		res.render('user_home/search', {results: results});
+	});
+});
+router.post('/ram/desktop/coorsair', (req, res)=>{
+	var search = req.body.search;
+	userModel.get_search_product( search , function(results){
+		res.render('user_home/search', {results: results});
+	});
+});
+router.post('/ram/desktop/gskill', (req, res)=>{
+	var search = req.body.search;
+	userModel.get_search_product( search , function(results){
+		res.render('user_home/search', {results: results});
+	});
+});
+router.post('/ram/laptop', (req, res)=>{
+	var search = req.body.search;
+	userModel.get_search_product( search , function(results){
+		res.render('user_home/search', {results: results});
+	});
+});
+router.post('/ram/laptop/adata', (req, res)=>{
+	var search = req.body.search;
+	userModel.get_search_product( search , function(results){
+		res.render('user_home/search', {results: results});
+	});
+});
+
+
+
+
+
+
 
 
 
